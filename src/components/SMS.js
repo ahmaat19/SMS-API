@@ -12,7 +12,7 @@ import moment from 'moment';
 const SMS = () => {
   const [newSMS, setNewSMS] = useState(null);
   const [network, setNetwork] = useState(null);
-  const [env] = useState('production');
+  const [env] = useState('development');
   const [errorMessage, setErrorMessage] = useState(null);
   const [responseData, setResponseData] = useState(null);
 
@@ -41,7 +41,7 @@ const SMS = () => {
   useEffect(() => {
     const subscribe = SmsListener.addListener(message => {
       if (message?.originatingAddress === '192') {
-        if (message?.body?.startsWith('[-EVCPlus-] waxaad ')) {
+        if (message?.body?.startsWith('[-EVCPlus-] Waxaad ')) {
           setNewSMS(message);
           sendSMS(message);
         }
